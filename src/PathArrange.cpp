@@ -65,6 +65,7 @@ float  rearrange(Graph* G, float *capacity, float *lambda, int*pre, float*d, flo
 		int f = pre[te[i] * wide + st[i]*len];
 		if (StoreRoute[i][0] < 0)
 		{
+			
 			while (f >= 0){
 				n++;
 				f = pre[G->incL[f].tail*wide + st[i]*len];
@@ -78,7 +79,7 @@ float  rearrange(Graph* G, float *capacity, float *lambda, int*pre, float*d, flo
 		Routes.push_back(RouteMark(value, i));
 	}
 	sort(Routes.begin(), Routes.end(), cmpv);
-	float maxv=Routes[Routes.size()-1].length;
+	//float maxv=Routes[Routes.size()-1].length;
 	//float as=float(1000*clock())/ CLOCKS_PER_SEC;
 	//cout<<"after as "<<as-stt<<endl;
 	for (int ai = 0; ai <Routes.size(); ai++)
@@ -95,7 +96,6 @@ float  rearrange(Graph* G, float *capacity, float *lambda, int*pre, float*d, flo
 			while (f >= 0)
 			{
 				StoreRoute[i].push_back(f);
-				haslink[f].push_back(i);
 				if (capacity[f] < demand)
 				{
 					flag = 1;
@@ -185,7 +185,7 @@ float  rearrange(Graph* G, float *capacity, float *lambda, int*pre, float*d, flo
 		vector<int> stillremain;
 		for (int i = 0; i < ren; i++){
 			float demand = pd[remain[i]];
-			BFS(G, st[remain[i]], te[remain[i]], dist, peg,demand,bca,maxv);
+			BFS(G, st[remain[i]], te[remain[i]], dist, peg,demand,bca,StoreRoute[remain[i]].size()-2);
 			int f = peg[te[remain[i]]];
 			if (dist[te[remain[i]]]<INFHOPS)
 			{
@@ -195,11 +195,9 @@ float  rearrange(Graph* G, float *capacity, float *lambda, int*pre, float*d, flo
 				while (f >= 0)
 				{
 
-					if (bca[f] < demand)
-						printf("erro!\n");
-					bca[f] -= demand;
+					bca[f]-= demand;
 					TmpRoute[remain[i]].push_back(f);
-					haslink[f].push_back(remain[i]);
+					//haslink[f].push_back(remain[i]);
 					f = peg[G->incL[f].tail];
 					j++;
 				}

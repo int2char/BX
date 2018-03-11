@@ -1,0 +1,33 @@
+../result/1000/0/
+ssadsa../result/1000/0/service.txttotal demand:51295
+service size1000
+graph size:6032
+node:1000
+task:1000
+edge:6032
+type:ER
+GRPHTYPE:1
+capacity:100
+Lagrange parrel searching..............
+tweight is: 291798
+in check
+check corrected!!!
+lowbound is:2.56475e+06
+addinpart is:-2.27295e+06
+hereLagrange serial searching..............
+tweight is: 293242
+in check
+check corrected!!!
+lowbound is:2564750
+addinpart is:-2271508
+hereGA Parallel searching.......
+27986
+check over!!tof: 27986
+before more564085
+982 982
+after totalv310223gap is253862
+in check
+erro inresult:wrong route/unreach temination/service0
+erro inresult:wrong route/unconected route/service0
+erro in result: wrong route/start wrong/service:0
+GA Serial searching.......
